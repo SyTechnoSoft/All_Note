@@ -18,6 +18,7 @@ android {
     buidFeatures{
         viewBinding true
 }
+
 */
     buildTypes {
         release {
