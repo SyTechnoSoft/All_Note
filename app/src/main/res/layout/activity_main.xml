@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@drawable/ic_filter_icon" />
+
+        <TextView
+            android:id="@+id/no_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/filter_bg"
+            android:fontFamily="@font/sans_regular"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="No Filter"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/highToLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12sp"
+            android:background="@drawable/filter_bg"
+            android:fontFamily="@font/sans_regular"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="High To Low"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/lowToHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/filter_bg"
+            android:fontFamily="@font/sans_regular"
+android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="Low To High"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/empty_textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/sans_bold"
+        android:gravity="center"
+        android:text="Create a note first"
+        android:textColor="@color/design_default_color_primary"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        tools:listitem="@layout/item_notes"
+        android:layout_below="@id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/newNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="23dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</RelativeLayout>

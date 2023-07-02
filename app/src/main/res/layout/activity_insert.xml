@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context=".Activity.Insert_Activity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/edit_background"
+                android:gravity="center_vertical"
+                android:hint="Title..."
+                android:padding="12dp" />
+
+            <EditText
+                android:id="@+id/edit_subTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/edit_background"
+                android:gravity="center_vertical"
+                android:hint="subTitle..."
+                android:padding="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="Priority"
+                    android:textColor="@color/black"
+                    android:textSize="24dp" />
+
+                <ImageView
+                    android:id="@+id/green"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/green_shape"
+                    android:src="@drawable/done" />
+
+                <ImageView
+                    android:id="@+id/yellow"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/yellow_shape" />
+
+                <ImageView
+                    android:id="@+id/red"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/red_shape" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edit_notes"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/edit_background"
+                android:gravity="start"
+                android:hint="Notes..."
+                android:padding="12dp" />
+
+        </LinearLayout>
+    </ScrollView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/doneNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/done" />
+</RelativeLayout>
