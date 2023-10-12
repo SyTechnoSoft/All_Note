@@ -75,30 +75,16 @@ public class Insert_Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Do tou want to save "+et_title.getText().toString()+" ?");
+        builder.setMessage("Do tou want to save " + et_title.getText().toString() + " ?");
         builder.setNeutralButton("Cancel",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+                (dialog, which) -> dialog.cancel());
         builder.setPositiveButton("Save",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Create();
-                    }
-                });
+                (dialog, which) -> Create());
         builder.setNegativeButton("Don't Save",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                   finish();
-                    }
-                });
-        AlertDialog alertDialog=builder.create();
+                (dialog, which) -> finish());
+        AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
