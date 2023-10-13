@@ -4,23 +4,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.view.View;
+
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.allnote.MainActivity;
 import com.allnote.Model.Notes;
 import com.allnote.R;
 import com.allnote.ViewModel.NotesViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.time.Duration;
+
 import java.util.Date;
+import java.util.Objects;
 
 public class Insert_Activity extends AppCompatActivity {
     EditText et_title, et_subTitle, et_notes;
@@ -34,7 +33,7 @@ public class Insert_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert);
-        getSupportActionBar().setTitle("Create Notes");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Create Notes");
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);//floating button
         et_title = findViewById(R.id.edit_title);

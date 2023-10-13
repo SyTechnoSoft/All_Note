@@ -101,8 +101,9 @@ public class Update_Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Do you to want to Update "+Uet_title.getText().toString()+"?");
+        builder1.setMessage("Do you to want to Update " + Uet_title.getText().toString() + "?");
         builder1.setCancelable(true);
 
         builder1.setPositiveButton(

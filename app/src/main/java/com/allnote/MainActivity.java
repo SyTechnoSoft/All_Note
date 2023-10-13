@@ -2,19 +2,15 @@ package com.allnote;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -81,11 +77,7 @@ public class MainActivity extends AppCompatActivity {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
 
         inAppUpdate();
-        btn_add.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, Insert_Activity.class));
-
-
-        });
+        btn_add.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Insert_Activity.class)));
 
         /*notesViewModel.getAllNotes.observe(this, notes -> {
             //recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -102,36 +94,16 @@ public class MainActivity extends AppCompatActivity {
                 emptyView.setVisibility(View.GONE);
             }
         });*/
-        notesViewModel.getAllNotes.observe(this, new Observer<List<Notes>>() {
-            @Override
-            public void onChanged(List<Notes> notes) {
-                setAdapter(notes);
-            }
-        });
+        notesViewModel.getAllNotes.observe(this, this::setAdapter);
     }
 
     private void loadData(int i) {
-        if (i==0){
-            notesViewModel.getAllNotes.observe(this, new Observer<List<Notes>>() {
-                @Override
-                public void onChanged(List<Notes> notes) {
-                    setAdapter(notes);
-                }
-            });
-        }else if(i==1){
-            notesViewModel.hightolow.observe(this, new Observer<List<Notes>>() {
-                @Override
-                public void onChanged(List<Notes> notes) {
-                    setAdapter(notes);
-                }
-            });
-        }else if(i==2){
-            notesViewModel.lowtohigh.observe(this, new Observer<List<Notes>>() {
-                @Override
-                public void onChanged(List<Notes> notes) {
-                    setAdapter(notes);
-                }
-            });
+        if (i == 0) {
+            notesViewModel.getAllNotes.observe(this, this::setAdapter);
+        } else if (i == 1) {
+            notesViewModel.hightolow.observe(this, this::setAdapter);
+        } else if (i == 2) {
+            notesViewModel.lowtohigh.observe(this, this::setAdapter);
         }
     }
 
@@ -183,14 +155,15 @@ public class MainActivity extends AppCompatActivity {
             intent.setData(Uri.parse("https://play.google.com/store/apps/collection/cluster?clp=igM4ChkKEzU0NTE5NTM4NDY2NTc2NTM3OTYQCBgDEhkKEzU0NTE5NTM4NDY2NTc2NTM3OTYQCBgDGAA%3D:S:ANO1ljLCYeQ&gsr=CjuKAzgKGQoTNTQ1MTk1Mzg0NjY1NzY1Mzc5NhAIGAMSGQoTNTQ1MTk1Mzg0NjY1NzY1Mzc5NhAIGAMYAA%3D%3D:S:ANO1ljK_aU8"));
             intent.setPackage("com.android.vending");
             startActivity(intent);
-        }else if (item.getItemId()==R.id.app_bar_search){
+        } else if (item.getItemId() == R.id.app_bar_search) {
 
             SearchView searchView = (SearchView) item.getActionView();
+            assert searchView != null;
             searchView.setQueryHint("Search notes here...");
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    Toast.makeText(MainActivity.this, ""+query, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "" + query, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -205,22 +178,22 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-            return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
 
     }
 
     private void NotesFilter(String newText) {
-        Toast.makeText(this, ""+newText, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + newText, Toast.LENGTH_SHORT).show();
 
     }
 
     private void inAppUpdate() {
 
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
-        // Returns an intent object that you use to check for an update.
         Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+        // Returns an intent object that you use to check for an update.
 
-// Checks that the platform will allow the specified type of update.
+        // Checks that the platform will allow the specified type of update.
         appUpdateInfoTask.addOnSuccessListener(result -> {
             if (result.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
                     // This example applies an immediate update. To apply a flexible update
